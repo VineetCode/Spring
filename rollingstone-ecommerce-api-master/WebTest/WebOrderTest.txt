@@ -1,0 +1,259 @@
+How to test the Order REST API
+
+https://github.com/FasterXML/jackson-databind/issues/95
+
+1. GET hhttp://localhost:8080/solcommerce/pdp-service/account/{accountId}/order/{id}
+
+http://localhost:8080/solcommerce/pdp-service/account/{accountId}/order/{id}
+http://localhost:8080/solcommerce/pdp-service/account/1/order/1
+
+
+{  
+   "id":1,
+   "orderNumber":"2345678",
+   "orderTrackingNumber":"FEDEX234567",
+   "orderDate":"2018-08-24",
+   "orderTotal":2500,
+   "userName":"bdatta",
+   "firstName":"Binit",
+   "lastName":"Datta",
+   "sex":"M",
+   "memberType":null,
+   "rgistrationDate":null,
+   "shippingHouseNumber":"5678",
+   "shippingStreetAddress":"234 Main Street",
+   "shippingCity":"Bloomington",
+   "shippingState":"MN",
+   "shippingZipCode":"50438",
+   "billingHouseNumber":"5678",
+   "billingStreetAddress":"234 Main Street",
+   "billingCity":"Bloomington",
+   "billingState":"MN",
+   "billingZipCode":"50438",
+   "accountNumber":"",
+   "accountName":"Binit Datta",
+   "orderItems":[  
+      {  
+         "id":1,
+         "productId":null,
+         "productCode":"P2345872",
+         "quantity":"1",
+         "unitPrice":2000,
+         "unitOfMeasurement":"PCS"
+      },
+      {  
+         "id":2,
+         "productId":null,
+         "productCode":"P2345873",
+         "quantity":"1",
+         "unitPrice":2000,
+         "unitOfMeasurement":"PCS"
+      }
+   ],
+
+}
+
+
+2. https://www.baeldung.com/spring-boot-jsoncomponent
+
+2. Get All Order
+
+http://localhost:8080/ssolcommerce/pdp-service/account/{accountId}/order/bypage
+http://localhost:8080/solcommerce/pdp-service/account/1/order/bypage
+
+
+
+3. Create a new Order
+
+POST http://localhost:8080/ssolcommerce/pdp-service/account/{accountId}/order
+POST http://localhost:8080/ssolcommerce/pdp-service/account/1/order
+
+Body
+
+{
+  "orderNumber": "ON234567",
+  "orderTrackingNumber": "FEDEX12345678",
+  "orderDate": "2018-08-21",
+  "user": {
+    "id": 1
+  },
+  "shippingAddress": {
+    "id": 1
+  },
+  "billingAddress": {
+    "id": 1
+  },
+  "account": {
+    "id": 1
+  }
+}
+
+Results
+
+{  
+   "id":2,
+   "orderNumber":"ON234567",
+   "orderTrackingNumber":"FEDEX12345678",
+   "orderDate":"2018-08-21T00:00:00.000+0000",
+   "orderTotal":null,
+   "user":{  
+      "id":1,
+      "userName":null,
+      "firstName":null,
+      "lastName":null,
+      "sex":null,
+      "memberType":null,
+      "rgistrationDate":null
+   },
+   "shippingAddress":{  
+      "id":1,
+      "houseNumber":null,
+      "streetAddress":null,
+      "city":null,
+      "state":null,
+      "zipCode":null,
+      "account":null
+   },
+   "billingAddress":{  
+      "id":1,
+      "houseNumber":null,
+      "streetAddress":null,
+      "city":null,
+      "state":null,
+      "zipCode":null,
+      "account":null
+   },
+   "account":{  
+      "id":1,
+      "accountNumber":null,
+      "accountName":null,
+      "user":null
+   },
+   "orderItems":[  
+
+   ],
+   "shipments":[  
+
+   ]
+}
+
+
+
+4. Update an Object
+
+PUT http://localhost:8080/solcommerce/pdp-service/account/{accountId}/order/{id}
+
+http://localhost:8080/solcommerce/pdp-service/account/1/order/2
+
+Body
+
+{
+	"id":2,
+  "orderNumber": "ON234567",
+  "orderTrackingNumber": "FEDEX12345678",
+  "orderDate": "2018-08-21",
+  "user": {
+    "id": 1
+  },
+  "shippingAddress": {
+    "id": 1
+  },
+  "billingAddress": {
+    "id": 1
+  },
+  "account": {
+    "id": 1
+  }
+}
+
+Results
+
+{  
+   "id":2,
+   "orderNumber":"ON2345699",
+   "orderTrackingNumber":"FEDEX1299999",
+   "orderDate":"2018-08-26T00:00:00.000+0000",
+   "orderTotal":null,
+   "user":{  
+      "id":1,
+      "userName":null,
+      "firstName":null,
+      "lastName":null,
+      "sex":null,
+      "memberType":null,
+      "rgistrationDate":null
+   },
+   "shippingAddress":{  
+      "id":1,
+      "houseNumber":null,
+      "streetAddress":null,
+      "city":null,
+      "state":null,
+      "zipCode":null,
+      "account":null
+   },
+   "billingAddress":{  
+      "id":1,
+      "houseNumber":null,
+      "streetAddress":null,
+      "city":null,
+      "state":null,
+      "zipCode":null,
+      "account":null
+   },
+   "account":{  
+      "id":1,
+      "accountNumber":null,
+      "accountName":null,
+      "user":null
+   },
+   "orderItems":[  
+
+   ],
+   "shipments":[  
+
+   ]
+}
+
+4. Get The Order
+
+GET http://localhost:8080/solcommerce/pdp-service/account/1/order/2
+
+
+
+
+{  
+   "id":2,
+   "orderNumber":"ON2345699",
+   "orderTrackingNumber":"FEDEX1299999",
+   "orderDate":"2018-08-25",
+   "orderTotal":null,
+   "userName":"bdatta",
+   "firstName":"Binit",
+   "lastName":"Datta",
+   "sex":"M",
+   "memberType":null,
+   "rgistrationDate":null,
+   "shippingHouseNumber":"5678",
+   "shippingStreetAddress":"234 Main Street",
+   "shippingCity":"Bloomington",
+   "shippingState":"MN",
+   "shippingZipCode":"50438",
+   "billingHouseNumber":"5678",
+   "billingStreetAddress":"234 Main Street",
+   "billingCity":"Bloomington",
+   "billingState":"MN",
+   "billingZipCode":"50438",
+   "accountNumber":"",
+   "accountName":"Binit Datta",
+   "orderItems":[  
+
+   ]
+}
+
+4. Delete an Order
+
+DELETE http://localhost:8080/solcommerce/pdp-service/account/1/order/2
+
+
+

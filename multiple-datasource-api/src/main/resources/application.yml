@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: database-app
+  dbprofileservice:  
+    driverClassName: com.mysql.jdbcDriver
+    url: "jdbc:mysql://localhost:3308/PROFILESERVICE?autoreconnect=true"
+    password: "root"
+    username: "root"
+    testOnBorrow: true
+    testOnWhileIdle: true
+    timeBetweenEvictionRunMillis: 60000
+    minEvicatbleIdleTimeMillis: 30000
+    validationQuery: SELECT 1
+    max-active: 15
+    max-idle: 10
+    max-wait: 8000
+  dbtaskservice: 
+    driverClassName: com.mysql.jdbcDriver
+    url: "jdbc:mysql://localhost:3308/PROFILESERVICE?autoreconnect=true"
+    password: "root"
+    username: "root"
+    testOnBorrow: true
+    testOnWhileIdle: true
+    timeBetweenEvictionRunMillis: 60000
+    minEvicatbleIdleTimeMillis: 30000
+    validationQuery: SELECT 1
+    max-active: 15
+    max-idle: 10
+    max-wait: 8000
+       
